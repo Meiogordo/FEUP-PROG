@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
 
-	int n[10];
+	int n[3]; // accepts more than 3 with no problem. is kept at 3 because of what is asked
 
 	for (int i = 0; i < (sizeof(n) / sizeof(n[0])); i++) {
 		cout << "Insira o numero " << i + 1 << " de " << (sizeof(n) / sizeof(n[0])) << endl;

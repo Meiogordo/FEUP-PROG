@@ -21,7 +21,7 @@ bool isprime(int n) {
 
 int main() {
 
-	//Escreve os primeiros 100 primos
+	//Escreve os primos abaixo de 10000
 
 	for (int i = 2; i < 10000; i++) {
 
