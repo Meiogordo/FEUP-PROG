@@ -17,7 +17,7 @@ void reduceFracc(int &numerator, int &denominator) {
 }
 
 void writeFracc(int numerator, int denominator) {
-	cout << numerator << " / " << denominator << endl;
+	cout << numerator << "/" << denominator << endl;
 }
 
 bool readFracc(int &numerator, int &denominator) {
@@ -67,7 +67,7 @@ void subtractFracs(int num1, int denom1, int num2, int denom2)
 
 	//equal denominators
 	if (denom1 == denom2) {
-		resnum = num1 + num2;
+		resnum = num1 - num2;
 		resdenom = denom1;
 	}
 	//different denominators
