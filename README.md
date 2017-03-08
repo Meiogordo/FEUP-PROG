@@ -3,7 +3,7 @@ Classes and projects developed in the PROG course unit.
 
 ### Project Infos
 * **Date:** 1st Year, 2nd Semester, 2016/2017
-* **Topic:** Classes, the project themes are TBD.
+* **Topic:** Exercises proposed in classes
 * **Course:** Programação (PROG) | Programming (Introduction)
 * **Course Link:** https://sigarra.up.pt/feup/pt/ucurr_geral.ficha_uc_view?pv_ocorrencia_id=384928
 
