@@ -14,6 +14,8 @@ This repository, and every other `FEUP-COURSE*` repos on GitHub correspond to sc
 (Credit to zettca for the original README layout, adapted by me)
 
 ### Notes:
-The whole worksheet has been solved as of 03/03/2017, feel free to look in my solutions if you need a hint :)
+The first part of the worksheet has been solved as of 03/03/2017 (apparently there is a part 2 now), feel free to look in my solutions if you need a hint :)
 
 Also feel free to ask me if you don't understand something, I will be happy to help.
+
+Part 2 was added as of 05/04/2017 more or less, started work on it on 06/04/2017.
