@@ -1,22 +1,35 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <fstream>
 
 using namespace std;
+
+void Save(string filename);
 
 //Describes a user
 class User {
 public:
 	//User is created as active by default but it can be specified that he is inactive
-	User(string name, bool isActive = true) : name(name), isActive(isActive) {}
+	User(string name, bool isActive = true) :
+			name(name), isActive(isActive) {
+	}
 	//Gets the user name
-	string getName() { return name; }
+	string getName() {
+		return name;
+	}
 	//Is the user active?
-	bool isUserActive() const { return isActive; }
+	bool isUserActive() const {
+		return isActive;
+	}
 	//Sets the user as inactive
-	void setUserInactive() { isActive = false; }
+	void setUserInactive() {
+		isActive = false;
+	}
 	//Sets the user as active
-	void setUserActive() { isActive = true; }
+	void setUserActive() {
+		isActive = true;
+	}
 	//Format is Name : Active/Inactive
 	void print(ostream &out) const {
 		out << name << " : " << (isActive ? "Active" : "Inactive");
@@ -37,27 +50,40 @@ class Book {
 public:
 	//Book constructor - requires name, is not borrowed nor lost by default
 	Book(string name, bool isBorrowed = false, bool isLost = false)
-		: name(name), isBorrowed(isBorrowed), isLost(isLost) {}
+	: name(name), isBorrowed(isBorrowed), isLost(isLost) {
+	}
 	//Gets the book name
-	string getBookName() const { return name; }
+	string getBookName() const { return name;}
 	//Check if a book is borrowed
-	bool isBookBorrowed() const { return isBorrowed; }
+	bool isBookBorrowed() const { return isBorrowed;}
 	//Check if a book is lost
-	bool isBookLost() const { return isLost; }
+	bool isBookLost() const { return isLost;}
 	//Mark a book as borrowed
-	void markBookBorrowed() { isBorrowed = true; isLost = false; }
+	void markBookBorrowed() {
+		isBorrowed = true;
+		isLost = false;
+	}
 	//Mark a book as returned (not borrowed)
-	void markBookReturned() { isBorrowed = false; }
+	void markBookReturned() {
+		isBorrowed = false;
+	}
 	//Mark a book as lost
-	void markBookLost() { isLost = true; isBorrowed = false; }
+	void markBookLost() {
+		isLost = true;
+		isBorrowed = false;
+	}
 	//Mark a book as found (not lost)
-	void markBookFound() { isLost = false; }
+	void markBookFound() {
+		isLost = false;
+	}
 	//Format is Name : In library/Lost/Borrowed
 	void print(ostream &out) const {
 		out << name << " : ";
 		//If book is not borrowed nor lost it is in the library
 		//Else, if it is borrowed it is borrowed, else it is lost
-		out << (!isBorrowed && !isLost ? "In library" : isBorrowed ? "Borrowed" : "Lost");
+		out
+				<< (!isBorrowed && !isLost ? "In library" :
+					isBorrowed ? "Borrowed" : "Lost");
 	}
 private:
 	string name;
@@ -71,13 +97,14 @@ ostream& operator <<(ostream &os, const Book &b) {
 	return os;
 }
 
-//Describes a library - we consider it a set of books and users
-class Library {
-	Library(const map<string, Book> &books, const map<string, User> &users) : books(books), users(users) {}
-private:
-	map<string, Book> books;
-	map<string, User> users;
-};
+//Unnecessary, lazy so I'll just do everything in main
+////Describes a library - we consider it a set of books and users
+//class Library {
+//	Library(const map<string, Book> &books, const map<string, User> &users) : books(books), users(users) {}
+//private:
+//	map<string, Book> books;
+//	map<string, User> users;
+//};
 
 //Menu Idea:
 //1 Book Management
@@ -95,6 +122,9 @@ private:
 //Auto save? Sure
 
 int main() {
+
+	//Init stuff
+
 	map<string, Book> books;
 
 	Book b1("Lusiadas");
@@ -102,9 +132,9 @@ int main() {
 	Book b3("Hitchhiker's Guide to The Galaxy", true);
 
 	//Inserting the books into the map
-	books.insert(pair<string, Book>(b1.getBookName(), b1));
-	books.insert(pair<string, Book>(b2.getBookName(), b2));
-	books.insert(pair<string, Book>(b3.getBookName(), b3));
+	books.insert( { b1.getBookName(), b1 });
+	books.insert( { b2.getBookName(), b2 });
+	books.insert( { b3.getBookName(), b3 });
 
 	map<string, User> users;
 
@@ -113,9 +143,33 @@ int main() {
 	User u3("Cenas");
 
 	//Inserting the users into the map
-	users.insert(pair<string, User>(u1.getName(), u1));
-	users.insert(pair<string, User>(u2.getName(), u2));
-	users.insert(pair<string, User>(u3.getName(), u3));
+	users.insert( { u1.getName(), u1 });
+	users.insert( { u2.getName(), u2 });
+	users.insert( { u3.getName(), u3 });
+
+	//End of init stuff
+
+	//This is basically nothing new except for using maps which I have used extensively in the project
+	//As such, this is going to be eternal WIP aka never going to be finished lol
+
+	//Saving in files
+	Save("ex 4 data.txt");
 
 	return 0;
 }
+
+void Save(string filename, const map<string, Book> &books, const map<string, User> &users) {
+	ofstream os(filename);
+	os << "Books:\n";
+	//Iterating through the books map
+	for(auto const &book : books){
+		os << book << endl;
+	}
+
+	os << "Users:\n";
+	//Iterating through the users map
+	for(auto const &user: users){
+		os << user << endl;
+	}
+}
+
