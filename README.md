@@ -19,3 +19,7 @@ The first part of the worksheet has been solved as of 03/03/2017 (apparently the
 Also feel free to ask me if you don't understand something, I will be happy to help.
 
 Part 2 was added as of 05/04/2017 more or less, started work on it on 06/04/2017.
+
+Finished Part 2 (with a lot of lazyness so some stuff does not completely work) as of 12/06/2017.
+
+I will eventually add the PDFs here for future reference.
